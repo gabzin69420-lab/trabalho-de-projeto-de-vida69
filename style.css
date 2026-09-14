@@ -421,3 +421,120 @@ footer p + p { margin-top: 8px; }
 @media (max-width: 850px) {
   .ai-card { grid-template-columns: 1fr; }
 }
+/* JANELA PIX */
+
+.pix-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.pix-modal.ativo {
+    display: flex;
+}
+
+.pix-box {
+    position: relative;
+
+    width: 90%;
+    max-width: 430px;
+
+    padding: 40px 30px;
+
+    background: #09131f;
+    color: white;
+
+    border: 1px solid #58b0ff;
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.6);
+}
+
+.pix-box h2 {
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.pix-titulo {
+    color: #58b0ff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.pix-chave {
+    margin: 20px 0;
+
+    padding: 15px;
+
+    background: rgba(88, 176, 255, 0.1);
+
+    border: 1px solid rgba(88, 176, 255, 0.3);
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    word-break: break-word;
+}
+
+.pix-valor {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.pix-valor strong {
+    color: white;
+}
+
+.pix-copiar {
+    padding: 13px 20px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #58b0ff;
+    color: #06101b;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.pix-copiar:hover {
+    background: #79c1ff;
+}
+
+.pix-close {
+    position: absolute;
+
+    top: 8px;
+    right: 14px;
+
+    border: none;
+    background: none;
+
+    color: #aaa;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+.pix-close:hover {
+    color: white;
+}
+
+#pixMensagem {
+    color: #58b0ff;
+    font-size: 12px;
+    margin-top: 10px;
+}

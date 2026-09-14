@@ -63,3 +63,47 @@ document.querySelectorAll('.suggestions button').forEach(button => {
     sendQuestion();
   });
 });
+// JANELA PIX
+
+const pixModal = document.getElementById("pixModal");
+const pixClose = document.getElementById("pixClose");
+const pixCopiar = document.getElementById("pixCopiar");
+const pixMensagem = document.getElementById("pixMensagem");
+
+// Botão de compra
+const botaoCompra = document.querySelector(".price-card .cta");
+
+botaoCompra.addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    pixModal.classList.add("ativo");
+
+});
+
+// Fechar no X
+pixClose.addEventListener("click", function() {
+
+    pixModal.classList.remove("ativo");
+
+});
+
+// Fechar clicando fora da janela
+pixModal.addEventListener("click", function(event) {
+
+    if (event.target === pixModal) {
+
+        pixModal.classList.remove("ativo");
+
+    }
+
+});
+
+// Copiar chave PIX
+pixCopiar.addEventListener("click", function() {
+
+    navigator.clipboard.writeText("+55 85 99121-3668");
+
+    pixMensagem.textContent = "Chave PIX copiada!";
+
+});
