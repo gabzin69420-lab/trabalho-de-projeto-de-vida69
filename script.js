@@ -63,47 +63,65 @@ document.querySelectorAll('.suggestions button').forEach(button => {
     sendQuestion();
   });
 });
-// JANELA PIX
 
-const pixModal = document.getElementById("pixModal");
-const pixClose = document.getElementById("pixClose");
-const pixCopiar = document.getElementById("pixCopiar");
-const pixMensagem = document.getElementById("pixMensagem");
+// =============================
+// JANELA DE PAGAMENTO PIX
+// =============================
 
-// Botão de compra
-const botaoCompra = document.querySelector(".price-card .cta");
+document.addEventListener("DOMContentLoaded", function () {
 
-botaoCompra.addEventListener("click", function(event) {
+    const botaoCompra = document.getElementById("pixPurchase");
+    const pixModal = document.getElementById("pixModal");
+    const pixClose = document.getElementById("pixClose");
+    const pixCopiar = document.getElementById("pixCopiar");
+    const pixMensagem = document.getElementById("pixMensagem");
 
-    event.preventDefault();
-
-    pixModal.classList.add("ativo");
-
-});
-
-// Fechar no X
-pixClose.addEventListener("click", function() {
-
-    pixModal.classList.remove("ativo");
-
-});
-
-// Fechar clicando fora da janela
-pixModal.addEventListener("click", function(event) {
-
-    if (event.target === pixModal) {
-
-        pixModal.classList.remove("ativo");
-
+    if (!botaoCompra || !pixModal || !pixClose || !pixCopiar) {
+        console.error("Elementos da janela PIX não foram encontrados.");
+        return;
     }
 
-});
+    // Abrir janela
+    botaoCompra.addEventListener("click", function (event) {
+        event.preventDefault();
 
-// Copiar chave PIX
-pixCopiar.addEventListener("click", function() {
+        pixModal.classList.add("active");
+        pixModal.setAttribute("aria-hidden", "false");
+    });
 
-    navigator.clipboard.writeText("+55 85 99121-3668");
+    // Fechar no X
+    pixClose.addEventListener("click", function () {
+        pixModal.classList.remove("active");
+        pixModal.setAttribute("aria-hidden", "true");
+    });
 
-    pixMensagem.textContent = "Chave PIX copiada!";
+    // Fechar clicando fora da caixa
+    pixModal.addEventListener("click", function (event) {
+        if (event.target === pixModal) {
+            pixModal.classList.remove("active");
+            pixModal.setAttribute("aria-hidden", "true");
+        }
+    });
+
+    // Fechar com ESC
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            pixModal.classList.remove("active");
+            pixModal.setAttribute("aria-hidden", "true");
+        }
+    });
+
+    // Copiar chave PIX
+    pixCopiar.addEventListener("click", function () {
+
+        navigator.clipboard.writeText("+55 85 99121-3668")
+            .then(function () {
+                pixMensagem.textContent = "Chave PIX copiada!";
+            })
+            .catch(function () {
+                pixMensagem.textContent = "Copie a chave PIX diretamente na tela.";
+            });
+
+    });
 
 });
